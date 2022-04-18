@@ -1,9 +1,64 @@
+
+
+from importlib.machinery import WindowsRegistryFinder
+
+def switchPlayer():
+  current_player = 'X'
+  if current_player == "X":
+    current_player = "O"
+  else:
+    current_player = "X"
+
+
+def check_row(board):
+  winner = None
+  if board[0][0] == board[0][1] == board[0][2] and board[0][0] != ".":
+    winner = board[0][0]
+    
+  elif board[1][0] == board[1][1] == board[1][2] and board[1][0] != ".":
+    winner = board[1][0]
+   
+  elif board[2][0] == board[2][1] == board[2][2] and board[2][0] != ".":
+    winner = board[2][0]
+
+  return winner
+
+def check_col(board):
+  winner = None
+  if board[0][0] == board[1][0] == board[2][0] and board[0][0] != ".":
+    winner = board[0][0]
+    
+  elif board[0][1] == board[1][1] == board[2][1] and board[0][1] != ".":
+    winner = board[0][1]
+    
+  elif board[0][2] == board[1][2] == board[2][2] and board[0][2] != ".":
+    winner = board[0][2]
+    
+  return winner
+
+def check_diag(board):
+  winner = None
+  if board[0][0] == board[1][1] == board[2][2] and board[0][0] != ".":
+    winner = board[0][0]
+  elif board[0][2] == board[1][1] == board[2][0] and board[0][2] != ".":
+    winner = board[0][2]
+  return winner
+
 def get_winning_player(board):
   """
   Should return the player that wins based on the tic tac toe rules.
   If no player has won, than "None" is returned.
   """
-  pass
+  winner = check_row(board)
+  if winner != None:
+    return winner
+  winner = check_col(board)
+  if winner != None:
+    return winner
+  winner = check_diag(board)
+  if winner != None:
+    return winner
+  
 
 
 if __name__ == "__main__":

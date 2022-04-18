@@ -3,8 +3,10 @@ def is_board_full(board):
   should return True if there are no more empty place on the board,
   otherwise should return False
   """
-  pass
-
+  if board[0].count(".") >= 1 or board[1].count(".") >= 1 or board[2].count(".") >= 1:
+    return False
+  else:
+    return True
 
 if __name__ == "__main__":
   # run this file to test you have implemented correctly the function

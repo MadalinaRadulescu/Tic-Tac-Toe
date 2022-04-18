@@ -1,3 +1,6 @@
+from function0 import display_board
+
+
 def get_human_coordinates(board, current_player):
   """
   Should return the read coordinates for the tic tac toe board from the terminal.
@@ -10,7 +13,59 @@ def get_human_coordinates(board, current_player):
   If the user enters the word "quit" in any format of capitalized letters the program
   should stop.
   """
-  pass
+  while True:
+    user_input = input("Please enter a position: ")
+    if user_input.upper() == "QUIT":
+      print("Nice Game! See you next time.")
+      quit()
+    elif user_input.upper() == "A1":
+      if board[0][0] == current_player:
+          print("Position already taken. Try again.")
+      else:
+          return tuple((0, 0))
+    elif user_input.upper() == "A2":
+      if board[0][1] == current_player:
+          print("Position already taken. Try again.")
+      else:
+          return tuple((0, 1))
+    elif user_input.upper() == "A3":
+      if board[0][2] == current_player:
+          print("Position already taken. Try again.")
+      else:
+          return tuple((0, 2))
+    elif user_input.upper() == "B1":
+      if board[1][0] == current_player:
+          print("Position already taken. Try again.")
+      else:
+          return tuple((1, 0))
+    elif user_input.upper() == "B2":
+      if board[1][1] == current_player:
+          print("Position already taken. Try again.")
+      else:
+          return tuple((1, 1))
+    elif user_input.upper() == "B3":
+      if board[1][2] == current_player:
+          print("Position already taken. Try again.")
+      else:
+          return tuple((1, 2))
+    elif user_input.upper() == "C1":
+      if board[2][0] == current_player:
+          print("Position already taken. Try again.")
+      else:
+          return tuple((2, 0))
+    elif user_input.upper() == "C2":
+      if board[2][1] == current_player:
+          print("Position already taken. Try again.")
+      else:
+          return tuple((2, 1))
+    elif user_input.upper() == "C3":
+      if board[2][2] == current_player:
+          print("Position already taken. Try again.")
+      else:
+          return tuple((2, 2))
+    else:
+      print("Invalid input. Try again.")
+        
 
 
 if __name__ == "__main__":
