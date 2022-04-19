@@ -131,22 +131,68 @@ def is_board_full(board):
         return True
 
 def get_random_ai_coordinates(board, current_player):
-    coordinate = []
-    numarLinie = 0
-    for linie in board:
-        numarColoana = 0
-        for coloana in linie:
-            if coloana == ".":
-                coordinate.append(tuple((numarLinie, numarColoana)))
-                numarColoana = numarColoana + 1
+    possibleMoves = []
+    numarRow = 0
+    for row in board:
+        numarCol = 0
+        for col in row:
+            if col == ".":
+                possibleMoves.append(tuple((numarRow, numarCol)))
+                numarCol = numarCol + 1
             else:
-                numarColoana = numarColoana + 1
-        numarLinie = numarLinie + 1
-   
-    if len(coordinate) > 0:
-        return random.choice(coordinate)
+                numarCol = numarCol + 1
+        numarRow = numarRow + 1
+    return selectRandom(possibleMoves)
+
+def selectRandom(list):
+    if len(list) > 0:
+        return random.choice(list)
     else:
         return None
+
+def get_umbeatable_ai_coordinates(board, current_player):
+    import copy
+    possibleMoves = []
+    numarRow = 0
+    for row in board:
+        numarCol = 0
+        for col in row:
+            if col == ".":
+                possibleMoves.append(tuple((numarRow, numarCol)))
+                numarCol = numarCol + 1
+            else:
+                numarCol = numarCol + 1
+        numarRow = numarRow + 1
+    move = 0
+    for let in ["O", "X"]:
+        for (x, y) in possibleMoves:
+            boardCopy = copy.deepcopy(board)
+            boardCopy[x][y] = let
+            if get_winning_player(boardCopy):
+                move = (x, y)
+                return move
+
+    cornersOpen = []
+    for (x, y) in possibleMoves:
+        if (x, y) in [(0, 0), (0, 2), (2, 2), (2, 0)]:
+            cornersOpen.append((x, y))
+
+    if len(cornersOpen) > 0:
+        move = selectRandom(cornersOpen)
+        return move
+
+    if (1, 1) in possibleMoves:
+        move = (1, 1)
+        return move
+
+    edgesOpen = []
+    for (x, y) in possibleMoves:
+        if (x, y) in [(0, 1), (1, 2), (2, 1), (1, 0)]:
+            edgesOpen.append((x, y))
+
+    if len(edgesOpen) > 0:
+        move = selectRandom(edgesOpen)
+        return move
 
 def get_menu_option():
     print("Game options:\n1. Human vs Human\n2. Random AI vs Random AI\n3. Human vs Random AI\n4. Human vs Unbeatable AI")
@@ -215,6 +261,26 @@ def main():
                 print("It's a tie!")
                 break
             current_player = switchPlayer(current_player)
+        elif game_mode == 4:
+            display_board(board)
+            if current_player == "X":
+                x, y = get_human_coordinates(board, current_player)
+                board[x][y] = current_player
+            else:
+                x,y = get_umbeatable_ai_coordinates(board, current_player)
+                board[x][y] = current_player
+            winner = get_winning_player(board)
+            its_a_tie = is_board_full(board)
+            if winner == "X" or winner == "O":
+                display_board(board)
+                print(f"The winner is Player {winner}!")
+                break
+            elif its_a_tie:
+                display_board(board)
+                print("It's a tie!")
+                break
+            current_player = switchPlayer(current_player)
+
         
 
         

@@ -1,6 +1,7 @@
-import random
+
 
 def get_random_ai_coordinates(board, current_player):
+  import random
   """
   Should return a tuple of 2 numbers. 
   Each number should be between 0-2.
