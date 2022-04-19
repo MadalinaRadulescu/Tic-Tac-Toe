@@ -1,5 +1,5 @@
 # human vs human 
-
+import random 
 def get_empty_board():
     emptyBoard = [[".", ".", "."],
                   [".", ".", "."],
@@ -131,7 +131,6 @@ def is_board_full(board):
         return True
 
 def get_random_ai_coordinates(board, current_player):
-    import random
     coordinate = []
     numarLinie = 0
     for linie in board:
@@ -143,8 +142,8 @@ def get_random_ai_coordinates(board, current_player):
             else:
                 numarColoana = numarColoana + 1
         numarLinie = numarLinie + 1
-
-    if len(coordinate):
+   
+    if len(coordinate) > 0:
         return random.choice(coordinate)
     else:
         return None
@@ -159,6 +158,7 @@ def get_menu_option():
             print("Invalid input. Try Again.")
 
 def main():
+    import time
     game_mode = get_menu_option()
     board = get_empty_board()
     is_game_running = True
@@ -179,6 +179,23 @@ def main():
                 print("It's a tie!")
                 break
             current_player = switchPlayer(current_player)
+        elif game_mode == 2:
+            display_board(board)
+            x, y = get_random_ai_coordinates(board, current_player)
+            board[x][y] = current_player
+            time.sleep(1)
+            winner = get_winning_player(board)
+            its_a_tie = is_board_full(board)
+            if winner == "X" or winner == "O":
+                display_board(board)
+                print(f"The winner is Player {winner}!")
+                break
+            elif its_a_tie:
+                display_board(board)
+                print("It's a tie!")
+                break
+            current_player = switchPlayer(current_player)
+
         elif game_mode == 3:
             display_board(board)
             if current_player == "X":
