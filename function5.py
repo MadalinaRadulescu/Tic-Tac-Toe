@@ -79,18 +79,19 @@ def get_umbeatable_ai_coordinates(board, current_player):
         move = (x, y)
         return move
 
+  if (1, 1) in possibleMoves:
+    move = (1, 1)
+    return move
+
   cornersOpen = []
   for (x, y) in possibleMoves:
     if (x, y) in [(0, 0), (0, 2), (2, 2), (2, 0)]:
       cornersOpen.append((x, y))
       
   if len(cornersOpen) > 0:
-      move = selectRandom(cornersOpen)
-      return move
+    move = selectRandom(cornersOpen)
+    return move
 
-  if (1, 1) in possibleMoves:
-      move = (1, 1)
-      return move
     
   edgesOpen = []
   for (x, y) in possibleMoves:

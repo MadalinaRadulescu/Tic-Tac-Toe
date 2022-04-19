@@ -19,47 +19,47 @@ def get_human_coordinates(board, current_player):
       print("Nice Game! See you next time.")
       quit()
     elif user_input.upper() == "A1":
-      if board[0][0] == current_player:
+      if board[0][0] != ".": #or board[0][0] == "O":
           print("Position already taken. Try again.")
       else:
           return tuple((0, 0))
     elif user_input.upper() == "A2":
-      if board[0][1] == current_player:
+      if board[0][1] != ".": # or board[0][1] == "O":
           print("Position already taken. Try again.")
       else:
           return tuple((0, 1))
     elif user_input.upper() == "A3":
-      if board[0][2] == current_player:
+      if board[0][2] != ".": # or board[0][2] == "O":
           print("Position already taken. Try again.")
       else:
           return tuple((0, 2))
     elif user_input.upper() == "B1":
-      if board[1][0] == current_player:
+      if board[1][0] != ".": # or board[1][0] == "O":
           print("Position already taken. Try again.")
       else:
           return tuple((1, 0))
     elif user_input.upper() == "B2":
-      if board[1][1] == current_player:
+      if board[1][1] != ".": # or board[1][1] == "O":
           print("Position already taken. Try again.")
       else:
           return tuple((1, 1))
     elif user_input.upper() == "B3":
-      if board[1][2] == current_player:
+      if board[1][2] != ".": # or board[1][2] == "O":
           print("Position already taken. Try again.")
       else:
           return tuple((1, 2))
     elif user_input.upper() == "C1":
-      if board[2][0] == current_player:
+      if board[2][0] != ".": # or board[2][0] == "O":
           print("Position already taken. Try again.")
       else:
           return tuple((2, 0))
     elif user_input.upper() == "C2":
-      if board[2][1] == current_player:
+      if board[2][1] != ".": # or board[2][1] == "O":
           print("Position already taken. Try again.")
       else:
           return tuple((2, 1))
     elif user_input.upper() == "C3":
-      if board[2][2] == current_player:
+      if board[2][2] != ".": # or board[2][2] == "O":
           print("Position already taken. Try again.")
       else:
           return tuple((2, 2))
