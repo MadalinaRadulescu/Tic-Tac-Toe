@@ -139,9 +139,10 @@ def get_random_ai_coordinates(board, current_player):
         for coloana in linie:
             if coloana == ".":
                 coordinate.append(tuple((numarLinie, numarColoana)))
-
-        numarColoana = numarColoana + 1
-    numarLinie = numarLinie + 1
+                numarColoana = numarColoana + 1
+            else:
+                numarColoana = numarColoana + 1
+        numarLinie = numarLinie + 1
 
     if len(coordinate):
         return random.choice(coordinate)
