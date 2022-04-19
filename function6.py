@@ -2,13 +2,6 @@
 
 from importlib.machinery import WindowsRegistryFinder
 
-def switchPlayer():
-  current_player = 'X'
-  if current_player == "X":
-    current_player = "O"
-  else:
-    current_player = "X"
-
 
 def check_row(board):
   winner = None

@@ -1,3 +1,5 @@
+import random
+
 def get_random_ai_coordinates(board, current_player):
   """
   Should return a tuple of 2 numbers. 
@@ -6,7 +8,23 @@ def get_random_ai_coordinates(board, current_player):
   If the board is full (all spots taken by either X or O) than "None"
   should be returned.
   """
-  pass
+  coordinate = []
+  numarLinie = 0
+  for linie in board:
+    numarColoana = 0
+    for coloana in linie:
+      if coloana == ".":
+        coordinate.append(tuple((numarLinie, numarColoana)))
+
+      numarColoana = numarColoana + 1
+
+    numarLinie = numarLinie + 1
+
+  if len(coordinate):
+    return random.choice(coordinate)
+  else:
+    return None
+
 
 
 if __name__ == "__main__":

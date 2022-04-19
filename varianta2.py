@@ -158,52 +158,25 @@ def get_menu_option():
             print("Invalid input. Try Again.")
 
 def main():
-    game_mode = get_menu_option()
     board = get_empty_board()
     is_game_running = True
     current_player = "X"
     while is_game_running:
-        if game_mode == 1:
+        display_board(board)
+        x, y = get_human_coordinates(board, current_player)
+        board[x][y] = current_player
+        winner = get_winning_player(board)
+        its_a_tie = is_board_full(board)
+        if winner == "X" or winner == "O":
             display_board(board)
-            x, y = get_human_coordinates(board, current_player)
-            board[x][y] = current_player
-            winner = get_winning_player(board)
-            its_a_tie = is_board_full(board)
-            if winner == "X" or winner == "O":
-                display_board(board)
-                print(f"The winner is Player {winner}!")
-                break
-            elif its_a_tie:
-                display_board(board)
-                print("It's a tie!")
-                break
-            current_player = switchPlayer(current_player)
-        elif game_mode == 3:
+            print(f"The winner is Player {winner}!")
+            break
+        elif its_a_tie:
             display_board(board)
-            if current_player == "X":
-                x, y = get_human_coordinates(board, current_player)
-                board[x][y] = current_player
-            else:
-                x,y = get_random_ai_coordinates(board, current_player)
-                board[x][y] = current_player
-            winner = get_winning_player(board)
-            its_a_tie = is_board_full(board)
-            if winner == "X" or winner == "O":
-                display_board(board)
-                print(f"The winner is Player {winner}!")
-                break
-            elif its_a_tie:
-                display_board(board)
-                print("It's a tie!")
-                break
-            current_player = switchPlayer(current_player)
-        
-
+            print("It's a tie!")
+            break
+        current_player = switchPlayer(current_player)
         
 
 if __name__ == "__main__":
     main()
-
-
-
-
