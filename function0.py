@@ -9,12 +9,15 @@ def display_board(board):
     C   0 | X | . 
        --+---+---
   """
+  print()
   print("    1   2   3")
   print("A   " + board[0][0] + " | " + board[0][1]+ " | " + board[0][2])
   print("   ---+---+---")
   print("B   " + board[1][0] + " | " + board[1][1] + " | " + board[1][2])
   print("   ---+---+---")
   print("C   " + board[2][0] + " | " + board[2][1] + " | " + board[2][2])
+  print()
+  
 
 
 

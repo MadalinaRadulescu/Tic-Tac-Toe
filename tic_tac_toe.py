@@ -28,11 +28,11 @@ def main():
             its_a_tie = is_board_full(board)
             if winner == "X" or winner == "O":
                 display_board(board)
-                print(f"The winner is Player {winner}!")
+                print(f"The winner is Player {winner}!\n")
                 break
             elif its_a_tie:
                 display_board(board)
-                print("It's a tie!")
+                print("It's a tie!\n")
                 break
             current_player = switchPlayer(current_player)
         elif game_mode == 2:
@@ -44,11 +44,11 @@ def main():
             its_a_tie = is_board_full(board)
             if winner == "X" or winner == "O":
                 display_board(board)
-                print(f"The winner is Player {winner}!")
+                print(f"The winner is Player {winner}!\n")
                 break
             elif its_a_tie:
                 display_board(board)
-                print("It's a tie!")
+                print("It's a tie!\n")
                 break
             current_player = switchPlayer(current_player)
 
@@ -64,11 +64,11 @@ def main():
             its_a_tie = is_board_full(board)
             if winner == "X" or winner == "O":
                 display_board(board)
-                print(f"The winner is Player {winner}!")
+                print(f"The winner is Player {winner}!\n")
                 break
             elif its_a_tie:
                 display_board(board)
-                print("It's a tie!")
+                print("It's a tie!\n")
                 break
             current_player = switchPlayer(current_player)
         elif game_mode == 4:
@@ -83,11 +83,11 @@ def main():
             its_a_tie = is_board_full(board)
             if winner == "X" or winner == "O":
                 display_board(board)
-                print(f"The winner is Player {winner}!")
+                print(f"The winner is Player {winner}!\n")
                 break
             elif its_a_tie:
                 display_board(board)
-                print("It's a tie!")
+                print("It's a tie!\n")
                 break
             current_player = switchPlayer(current_player)
         

@@ -79,26 +79,67 @@ def get_umbeatable_ai_coordinates(board, current_player):
         move = (x, y)
         return move
 
-  if (1, 1) in possibleMoves:
-    move = (1, 1)
-    return move
+  if board[1][1] == "X":
+    cornersOpen = []
+    for (x, y) in possibleMoves:
+      if (x, y) in [(0, 0), (0, 2), (2, 2), (2, 0)]:
+        cornersOpen.append((x, y))
+    if len(cornersOpen) > 0:
+      move = selectRandom(cornersOpen)
+      return move
+    edgesOpen = []
+    for (x, y) in possibleMoves:
+      if (x, y) in [(0, 1), (1, 2), (2, 1), (1, 0)]:
+        edgesOpen.append((x, y))
+    if len(edgesOpen) > 0:
+      move = selectRandom(edgesOpen)
+      return move
 
-  edgesOpen = []
-  for (x, y) in possibleMoves:
-    if (x, y) in [(0, 1), (1, 2), (2, 1), (1, 0)]:
-      edgesOpen.append((x, y))
-  if len(edgesOpen) > 0:
-    move = selectRandom(edgesOpen)
-    return move
+  elif board[0][0] == "X" or board[0][2] == "X" or board[2][2] == "X" or board[2][0] == "X":
+    if (1,1) in possibleMoves:
+      move = (1, 1)
+      return move
+        
+    edgesOpen = []
+    for (x, y) in possibleMoves:
+      if (x, y) in [(0, 1), (1, 2), (2, 1), (1, 0)]:
+        edgesOpen.append((x, y))
+    if len(edgesOpen) > 0:
+      move = selectRandom(edgesOpen)
+      return move
 
-  cornersOpen = []
-  for (x, y) in possibleMoves:
-    if (x, y) in [(0, 0), (0, 2), (2, 2), (2, 0)]:
-      cornersOpen.append((x, y))
-      
-  if len(cornersOpen) > 0:
-    move = selectRandom(cornersOpen)
-    return move
+    cornersOpen = []
+    for (x, y) in possibleMoves:
+      if (x, y) in [(0, 0), (0, 2), (2, 2), (2, 0)]:
+        cornersOpen.append((x, y))
+        
+    if len(cornersOpen) > 0:
+      move = selectRandom(cornersOpen)
+      return move
+    
+  else:
+    if (1,1) in possibleMoves:
+      move = (1, 1)
+      return move
+
+    cornersOpen = []
+    for (x, y) in possibleMoves:
+      if (x, y) in [(0, 0), (0, 2), (2, 2), (2, 0)]:
+        cornersOpen.append((x, y))
+        
+    if len(cornersOpen) > 0:
+      move = selectRandom(cornersOpen)
+      return move
+
+    edgesOpen = []
+    for (x, y) in possibleMoves:
+      if (x, y) in [(0, 1), (1, 2), (2, 1), (1, 0)]:
+        edgesOpen.append((x, y))
+    if len(edgesOpen) > 0:
+      move = selectRandom(edgesOpen)
+      return move
+
+    
 
     
   
