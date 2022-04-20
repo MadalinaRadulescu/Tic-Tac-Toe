@@ -1,4 +1,6 @@
 
+from function6 import get_winning_player
+import copy
 
 def get_random_ai_coordinates(board, current_player):
   import random
@@ -9,22 +11,56 @@ def get_random_ai_coordinates(board, current_player):
   If the board is full (all spots taken by either X or O) than "None"
   should be returned.
   """
-  coordinate = []
-  numarLinie = 0
-  for linie in board:
-    numarColoana = 0
-    for coloana in linie:
-      if coloana == ".":
-        coordinate.append(tuple((numarLinie, numarColoana)))
+  possibleMoves = []
+  numarRow = 0
+  for row in board:
+    numarCol = 0
+    for col in row:
+      if col == ".":
+        possibleMoves.append(tuple((numarRow, numarCol)))
 
-      numarColoana = numarColoana + 1
+      numarCol = numarCol + 1
 
-    numarLinie = numarLinie + 1
+    numarRow = numarRow + 1
 
-  if len(coordinate):
-    return random.choice(coordinate)
+  move = 0
+  for let in ["O", "X"]:
+    for (x, y) in possibleMoves:
+      boardCopy = copy.deepcopy(board)
+      boardCopy[x][y] = let
+      if get_winning_player(boardCopy):
+        move = (x, y)
+        return move
+    
+  cornersOpen = []
+  for (x, y) in possibleMoves:
+    if (x, y) in [(0, 0), (0, 2), (2, 2), (2, 0)]:
+      cornersOpen.append((x, y))
+      
+  if len(cornersOpen) > 0:
+    move = selectRandom(cornersOpen)
+    return move
+
+  if (1, 1) in possibleMoves:
+    move = (1, 1)
+    return move
+
+  edgesOpen = []
+  for (x, y) in possibleMoves:
+    if (x, y) in [(0, 1), (1, 2), (2, 1), (1, 0)]:
+      edgesOpen.append((x, y))
+  if len(edgesOpen) > 0:
+    move = selectRandom(edgesOpen)
+    return move
+
+
+def selectRandom(list):
+  import random
+  if len(list) > 0:
+      return random.choice(list)
   else:
-    return None
+      return None
+  
 
 
 
