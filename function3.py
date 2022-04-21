@@ -16,7 +16,7 @@ def get_human_coordinates(board, current_player):
   while True:
     user_input = input("\nPlease enter a position: ")
     if user_input.upper() == "QUIT":
-      print("Nice Game! See you next time.")
+      print("\nNice Game! See you next time.\n")
       quit()
     elif user_input.upper() == "A1":
       if board[0][0] != ".": #or board[0][0] == "O":

@@ -10,18 +10,26 @@ def get_menu_option():
   If the user will enter invalid data (for example 5), than a message will appear
   asking to input a new value.
   '''
-  
+
   print("\nLet's play TIC TAC TOE")
   print("\nGame options:\n1. Human vs Human\n2. Random AI vs Random AI\n3. Human vs Random AI\n4. Human vs Unbeatable AI")
   while True:
-    opt_input = int(input("\nSelect game mode: "))
-    if opt_input < 5 and opt_input > 0:
-      return opt_input
-    else:
-      print("Invalid input. Try Again.")
-  
-  
-  
+    opt_input = input("\nSelect game mode: ")
+    try:
+      opt_input = int(opt_input)
+      if opt_input < 5 and opt_input > 0:
+        return opt_input
+      else:
+        print("\nInvalid input. Try Again.")
+    except ValueError:
+      print("\nThats not a number. Please enter a number from 1-4.")
+    # if opt_input < 5 and opt_input > 0:
+    #   return opt_input
+    # else:
+    #   print("\nInvalid input. Try Again.")
+
+
+
 
 
 if __name__ == "__main__":
