@@ -20,79 +20,35 @@ def main():
     is_game_running = True
     current_player = 'X'
     while is_game_running:
-        if game_mode == 1:
-            display_board(board)
+        print(f"\nIt's player {current_player}'s turn!")
+        display_board(board)
+        if game_mode==1:
             x, y = get_human_coordinates(board, current_player)
-            board[x][y] = current_player
-            winner = get_winning_player(board)
-            its_a_tie = is_board_full(board)
-            if winner == "X" or winner == "O":
-                display_board(board)
-                print(f"The winner is Player {winner}!\n")
-                break
-            elif its_a_tie:
-                display_board(board)
-                print("It's a tie!\n")
-                break
-            current_player = switchPlayer(current_player)
         elif game_mode == 2:
-            display_board(board)
             x, y = get_random_ai_coordinates(board, current_player)
-            board[x][y] = current_player
-            time.sleep(1)
-            winner = get_winning_player(board)
-            its_a_tie = is_board_full(board)
-            if winner == "X" or winner == "O":
-                display_board(board)
-                print(f"The winner is Player {winner}!\n")
-                break
-            elif its_a_tie:
-                display_board(board)
-                print("It's a tie!\n")
-                break
-            current_player = switchPlayer(current_player)
-
         elif game_mode == 3:
-            display_board(board)
             if current_player == "X":
                 x, y = get_human_coordinates(board, current_player)
-                board[x][y] = current_player
             else:
                 x,y = get_random_ai_coordinates(board, current_player)
-                board[x][y] = current_player
-            winner = get_winning_player(board)
-            its_a_tie = is_board_full(board)
-            if winner == "X" or winner == "O":
-                display_board(board)
-                print(f"The winner is Player {winner}!\n")
-                break
-            elif its_a_tie:
-                display_board(board)
-                print("It's a tie!\n")
-                break
-            current_player = switchPlayer(current_player)
         elif game_mode == 4:
-            display_board(board)
             if current_player == "X":
                 x, y = get_human_coordinates(board, current_player)
-                board[x][y] = current_player
             else:
                 x,y = get_umbeatable_ai_coordinates(board, current_player)
-                board[x][y] = current_player
-            winner = get_winning_player(board)
-            its_a_tie = is_board_full(board)
-            if winner == "X" or winner == "O":
-                display_board(board)
-                print(f"The winner is Player {winner}!\n")
-                break
-            elif its_a_tie:
-                display_board(board)
-                print("It's a tie!\n")
-                break
-            current_player = switchPlayer(current_player)
+        board[x][y] = current_player
+        time.sleep(1)
+        winner = get_winning_player(board)
+        its_a_tie = is_board_full(board)
+        if winner == "X" or winner == "O":
+            display_board(board)
+            print(f"The winner is Player {winner}!\n")
+            break
+        elif its_a_tie:
+            display_board(board)
+            print("It's a tie!\n")
+            break
+        current_player = switchPlayer(current_player)
         
-        
-
-
 if __name__ == "__main__":
     main()
